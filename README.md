@@ -1,4 +1,4 @@
-# 🎓 DSA Masterclass: C & C++ Learning Journey
+# 🎓 DSA : C & C++ Learning Journey
 
 A comprehensive, self-contained interactive dashboard documenting my progress, theory, and implementations of fundamental to advanced Data Structures and Algorithms in C and C++. 
 

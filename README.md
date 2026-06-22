@@ -122,7 +122,7 @@ dsa-learning-journey/
 
 | Category | Topics | Completed | Progress Rate | Status |
 | :--- | :---: | :---: | :---: | :---: |
-| [Data Structures](#1-data-structures) | 9 | 0 / 9 | 0% | ⏳ Planned |
+| [Data Structures](#1-data-structures) | 9 | 8 / 9 | 89% | 🟡 Active |
 | [Searching](#2-searching) | 3 | 0 / 3 | 0% | ⏳ Planned |
 | [Sorting](#3-sorting) | 8 | 0 / 8 | 0% | ⏳ Planned |
 | [Graph Algorithms](#4-graph-algorithms) | 8 | 0 / 8 | 0% | ⏳ Planned |
@@ -145,15 +145,15 @@ Data structures are specialized formats for organizing, processing, retrieving, 
 
 | Topic | Recommended File Name | C Status | C++ Status | Target Complexity |
 | :--- | :--- | :---: | :---: | :---: |
-| Array | `array.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Linked List | `singly_linked_list.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Doubly Linked List | `doubly_linked_list.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Stack | `stack.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Queue | `queue.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Circular Queue | `circular_queue.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Trees | `trees.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
+| Array | `array.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
+| Linked List | `singly_linked_list.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
+| Doubly Linked List | `doubly_linked_list.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
+| Stack | `stack.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
+| Queue | `queue.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
+| Circular Queue | `circular_queue.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
+| Trees | `trees.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
 | Binary Search Tree (BST) | `binary_search_tree.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
-| Heap (Min Heap, Max Heap) | `heap.[c/cpp]` | ⏳ Planned | ⏳ Planned | Variable |
+| Heap (Min Heap, Max Heap) | `heap.[c/cpp]` | ✔️ Completed | ✔️ Completed | Variable |
 
 
 <details>
@@ -178,22 +178,31 @@ An Array is a collection of elements stored at contiguous memory locations. It a
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file array.c
- * @brief C Implementation of Array
- */
-
 #include <stdio.h>
-#include <stdlib.h>
-
-// TODO: Paste your C implementation of Array here
 
 int main() {
-    printf("Running C implementation of Array...\n");
-    // TODO: Write test cases and execute your operations here
+    int n;
+
+    printf("Enter the size of the array: ");
+    scanf("%d", &n);
+
+    int arr[n];
+
+    printf("Enter %d elements:\n", n);
+
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
+    }
+
+    printf("Array elements are:\n");
+
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+
     return 0;
 }
 ```
@@ -201,24 +210,32 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file array.cpp
- * @brief C++ Implementation of Array
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
-
-// TODO: Paste your C++ implementation of Array here
+using namespace std;
 
 int main() {
-    std::cout << "Running C++ implementation of Array..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    int n;
+
+    cout << "Enter the size of the array: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter " << n << " elements:" << endl;
+
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    cout << "Array elements are: ";
+
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
     return 0;
 }
 ```
@@ -258,22 +275,61 @@ A Singly Linked List is a linear collection of nodes where each node contains da
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file linked_list.c
- * @brief C Implementation of Linked List
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO: Paste your C implementation of Linked List here
+
+struct Node {
+    int data;
+    struct Node *next;
+};
 
 int main() {
-    printf("Running C implementation of Linked List...\n");
-    // TODO: Write test cases and execute your operations here
+    int n, value;
+
+    printf("How many nodes do you want? ");
+    scanf("%d", &n);
+
+    struct Node *head = NULL;
+    struct Node *temp = NULL;
+    struct Node *newNode = NULL;
+
+    for (int i = 0; i < n; i++) {
+        
+        newNode = (struct Node *)malloc(sizeof(struct Node));
+
+        printf("Enter value for node %d: ", i + 1);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = NULL;
+
+       
+        if (head == NULL) {
+            head = newNode;
+            temp = newNode;
+        }
+       
+        else {
+            temp->next = newNode;
+            temp = newNode;
+        }
+    }
+
+    
+    printf("\nLinked List: ");
+
+    temp = head;
+    while (temp != NULL) {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+
+    printf("NULL\n");
+
     return 0;
 }
 ```
@@ -281,24 +337,59 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file linked_list.cpp
- * @brief C++ Implementation of Linked List
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-// TODO: Paste your C++ implementation of Linked List here
+
+struct Node {
+    int data;
+    Node* next;
+};
 
 int main() {
-    std::cout << "Running C++ implementation of Linked List..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    int n, value;
+
+    cout << "How many nodes do you want? ";
+    cin >> n;
+
+    Node* head = NULL;
+    Node* temp = NULL;
+
+    for (int i = 0; i < n; i++) {
+        Node* newNode = new Node();
+
+        cout << "Enter value for node " << i + 1 << ": ";
+        cin >> value;
+
+        newNode->data = value;
+        newNode->next = NULL;
+
+     
+        if (head == NULL) {
+            head = newNode;
+            temp = newNode;
+        }
+  
+        else {
+            temp->next = newNode;
+            temp = newNode;
+        }
+    }
+
+
+    cout << "\nLinked List: ";
+
+    temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+
+    cout << "NULL" << endl;
+
     return 0;
 }
 ```
@@ -336,22 +427,73 @@ A Doubly Linked List (DLL) is a node-based data structure where each node contai
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file doubly_linked_list.c
- * @brief C Implementation of Doubly Linked List
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO: Paste your C implementation of Doubly Linked List here
+// Node structure
+struct Node {
+    int data;
+    struct Node* prev;
+    struct Node* next;
+};
 
 int main() {
-    printf("Running C implementation of Doubly Linked List...\n");
-    // TODO: Write test cases and execute your operations here
+    int n, value;
+
+    printf("How many nodes do you want? ");
+    scanf("%d", &n);
+
+    struct Node* head = NULL;
+    struct Node* temp = NULL;
+    struct Node* newNode = NULL;
+
+    for (int i = 0; i < n; i++) {
+        newNode = (struct Node*)malloc(sizeof(struct Node));
+
+        printf("Enter value for node %d: ", i + 1);
+        scanf("%d", &value);
+
+        newNode->data = value;
+        newNode->next = NULL;
+        newNode->prev = NULL;
+
+        // First node
+        if (head == NULL) {
+            head = newNode;
+            temp = newNode;
+        }
+        // Other nodes
+        else {
+            temp->next = newNode;
+            newNode->prev = temp;
+            temp = newNode;
+        }
+    }
+
+    // Display forward
+    printf("\nForward Traversal: ");
+    temp = head;
+    while (temp != NULL) {
+        printf("%d <-> ", temp->data);
+        if (temp->next == NULL) break; // stop at last node
+        temp = temp->next;
+    }
+    printf("NULL\n");
+
+    // Move to last node for backward traversal
+    struct Node* last = temp;
+
+    // Display backward
+    printf("Backward Traversal: ");
+    while (last != NULL) {
+        printf("%d <-> ", last->data);
+        last = last->prev;
+    }
+    printf("NULL\n");
+
     return 0;
 }
 ```
@@ -359,24 +501,71 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file doubly_linked_list.cpp
- * @brief C++ Implementation of Doubly Linked List
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-// TODO: Paste your C++ implementation of Doubly Linked List here
+// Node structure
+struct Node {
+    int data;
+    Node* prev;
+    Node* next;
+};
 
 int main() {
-    std::cout << "Running C++ implementation of Doubly Linked List..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    int n, value;
+
+    cout << "How many nodes do you want? ";
+    cin >> n;
+
+    Node* head = NULL;
+    Node* temp = NULL;
+
+    for (int i = 0; i < n; i++) {
+        Node* newNode = new Node();
+
+        cout << "Enter value for node " << i + 1 << ": ";
+        cin >> value;
+
+        newNode->data = value;
+        newNode->next = NULL;
+        newNode->prev = NULL;
+
+        // First node
+        if (head == NULL) {
+            head = newNode;
+            temp = newNode;
+        }
+        // Other nodes
+        else {
+            temp->next = newNode;
+            newNode->prev = temp;
+            temp = newNode;
+        }
+    }
+
+    // Forward traversal
+    cout << "\nForward Traversal: ";
+    temp = head;
+    Node* last = NULL;
+
+    while (temp != NULL) {
+        cout << temp->data << " <-> ";
+        last = temp;        // save last node
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+
+    // Backward traversal
+    cout << "Backward Traversal: ";
+    while (last != NULL) {
+        cout << last->data << " <-> ";
+        last = last->prev;
+    }
+    cout << "NULL" << endl;
+
     return 0;
 }
 ```
@@ -415,22 +604,83 @@ A Stack is a linear data structure that follows the **Last-In, First-Out (LIFO)*
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file stack.c
- * @brief C Implementation of Stack
- */
-
 #include <stdio.h>
-#include <stdlib.h>
 
-// TODO: Paste your C implementation of Stack here
+#define MAX 5
+
+int stack[MAX];
+int top = -1;
+
+// Push operation
+void push(int value) {
+    if (top == MAX - 1) {
+        printf("Stack Overflow! Cannot insert %d\n", value);
+    } else {
+        top++;
+        stack[top] = value;
+        printf("%d pushed into stack\n", value);
+    }
+}
+
+// Pop operation
+void pop() {
+    if (top == -1) {
+        printf("Stack Underflow! Nothing to pop\n");
+    } else {
+        printf("%d popped from stack\n", stack[top]);
+        top--;
+    }
+}
+
+// Display stack
+void display() {
+    if (top == -1) {
+        printf("Stack is empty\n");
+    } else {
+        printf("Stack elements are: ");
+        for (int i = top; i >= 0; i--) {
+            printf("%d ", stack[i]);
+        }
+        printf("\n");
+    }
+}
 
 int main() {
-    printf("Running C implementation of Stack...\n");
-    // TODO: Write test cases and execute your operations here
+    int choice, value;
+
+    while (1) {
+        printf("\n--- STACK MENU ---\n");
+        printf("1. Push\n2. Pop\n3. Display\n4. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &value);
+                push(value);
+                break;
+
+            case 2:
+                pop();
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
     return 0;
 }
 ```
@@ -438,24 +688,93 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file stack.cpp
- * @brief C++ Implementation of Stack
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-// TODO: Paste your C++ implementation of Stack here
+#define MAX 5
+
+class Stack {
+private:
+    int arr[MAX];
+    int top;
+
+public:
+    Stack() {
+        top = -1;
+    }
+
+    // Push operation
+    void push(int value) {
+        if (top == MAX - 1) {
+            cout << "Stack Overflow! Cannot insert " << value << endl;
+        } else {
+            top++;
+            arr[top] = value;
+            cout << value << " pushed into stack" << endl;
+        }
+    }
+
+    // Pop operation
+    void pop() {
+        if (top == -1) {
+            cout << "Stack Underflow! Nothing to pop" << endl;
+        } else {
+            cout << arr[top] << " popped from stack" << endl;
+            top--;
+        }
+    }
+
+    // Display stack
+    void display() {
+        if (top == -1) {
+            cout << "Stack is empty" << endl;
+        } else {
+            cout << "Stack elements are: ";
+            for (int i = top; i >= 0; i--) {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+        }
+    }
+};
 
 int main() {
-    std::cout << "Running C++ implementation of Stack..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    Stack s;
+    int choice, value;
+
+    while (true) {
+        cout << "\n--- STACK MENU ---\n";
+        cout << "1. Push\n2. Pop\n3. Display\n4. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter value: ";
+                cin >> value;
+                s.push(value);
+                break;
+
+            case 2:
+                s.pop();
+                break;
+
+            case 3:
+                s.display();
+                break;
+
+            case 4:
+                cout << "Exiting..." << endl;
+                return 0;
+
+            default:
+                cout << "Invalid choice!" << endl;
+        }
+    }
+
     return 0;
 }
 ```
@@ -494,22 +813,96 @@ A Queue is a linear data structure that follows the **First-In, First-Out (FIFO)
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file queue.c
- * @brief C Implementation of Queue
- */
-
 #include <stdio.h>
-#include <stdlib.h>
 
-// TODO: Paste your C implementation of Queue here
+#define MAX 5
+
+int queue[MAX];
+int front = -1;
+int rear = -1;
+
+// Enqueue (insert)
+void enqueue(int value) {
+    if (rear == MAX - 1) {
+        printf("Queue Overflow! Cannot insert %d\n", value);
+        return;
+    }
+
+    if (front == -1) {
+        front = 0;
+    }
+
+    rear++;
+    queue[rear] = value;
+
+    printf("%d inserted into queue\n", value);
+}
+
+// Dequeue (delete)
+void dequeue() {
+    if (front == -1 || front > rear) {
+        printf("Queue Underflow! Nothing to delete\n");
+        return;
+    }
+
+    printf("%d deleted from queue\n", queue[front]);
+    front++;
+
+    if (front > rear) {
+        front = rear = -1;
+    }
+}
+
+// Display queue
+void display() {
+    if (front == -1 || front > rear) {
+        printf("Queue is empty\n");
+        return;
+    }
+
+    printf("Queue elements are: ");
+    for (int i = front; i <= rear; i++) {
+        printf("%d ", queue[i]);
+    }
+    printf("\n");
+}
 
 int main() {
-    printf("Running C implementation of Queue...\n");
-    // TODO: Write test cases and execute your operations here
+    int choice, value;
+
+    while (1) {
+        printf("\n--- QUEUE MENU ---\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+
+            case 2:
+                dequeue();
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
     return 0;
 }
 ```
@@ -517,24 +910,106 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file queue.cpp
- * @brief C++ Implementation of Queue
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-// TODO: Paste your C++ implementation of Queue here
+#define MAX 5
+
+class Queue {
+private:
+    int arr[MAX];
+    int front;
+    int rear;
+
+public:
+    Queue() {
+        front = -1;
+        rear = -1;
+    }
+
+    // Enqueue (insert)
+    void enqueue(int value) {
+        if (rear == MAX - 1) {
+            cout << "Queue Overflow! Cannot insert " << value << endl;
+            return;
+        }
+
+        if (front == -1) {
+            front = 0;
+        }
+
+        rear++;
+        arr[rear] = value;
+        cout << value << " inserted into queue" << endl;
+    }
+
+    // Dequeue (delete)
+    void dequeue() {
+        if (front == -1 || front > rear) {
+            cout << "Queue Underflow! Nothing to delete" << endl;
+            return;
+        }
+
+        cout << arr[front] << " deleted from queue" << endl;
+        front++;
+
+        if (front > rear) {
+            front = rear = -1;
+        }
+    }
+
+    // Display queue
+    void display() {
+        if (front == -1 || front > rear) {
+            cout << "Queue is empty" << endl;
+            return;
+        }
+
+        cout << "Queue elements are: ";
+        for (int i = front; i <= rear; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
 
 int main() {
-    std::cout << "Running C++ implementation of Queue..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    Queue q;
+    int choice, value;
+
+    while (true) {
+        cout << "\n--- QUEUE MENU ---\n";
+        cout << "1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter value: ";
+                cin >> value;
+                q.enqueue(value);
+                break;
+
+            case 2:
+                q.dequeue();
+                break;
+
+            case 3:
+                q.display();
+                break;
+
+            case 4:
+                cout << "Exiting..." << endl;
+                return 0;
+
+            default:
+                cout << "Invalid choice!" << endl;
+        }
+    }
+
     return 0;
 }
 ```
@@ -572,22 +1047,109 @@ A Circular Queue is an optimization of the standard queue where the last positio
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file circular_queue.c
- * @brief C Implementation of Circular Queue
- */
-
 #include <stdio.h>
-#include <stdlib.h>
 
-// TODO: Paste your C implementation of Circular Queue here
+#define MAX 5
+
+int queue[MAX];
+int front = -1;
+int rear = -1;
+
+// Enqueue (insert)
+void enqueue(int value) {
+    // check overflow
+    if ((rear + 1) % MAX == front) {
+        printf("Queue Overflow! Cannot insert %d\n", value);
+        return;
+    }
+
+    // first element
+    if (front == -1) {
+        front = 0;
+        rear = 0;
+    } else {
+        rear = (rear + 1) % MAX;
+    }
+
+    queue[rear] = value;
+    printf("%d inserted into queue\n", value);
+}
+
+// Dequeue (delete)
+void dequeue() {
+    if (front == -1) {
+        printf("Queue Underflow! Nothing to delete\n");
+        return;
+    }
+
+    printf("%d deleted from queue\n", queue[front]);
+
+    // only one element
+    if (front == rear) {
+        front = rear = -1;
+    } else {
+        front = (front + 1) % MAX;
+    }
+}
+
+// Display queue
+void display() {
+    if (front == -1) {
+        printf("Queue is empty\n");
+        return;
+    }
+
+    printf("Queue elements are: ");
+
+    int i = front;
+    while (1) {
+        printf("%d ", queue[i]);
+
+        if (i == rear)
+            break;
+
+        i = (i + 1) % MAX;
+    }
+
+    printf("\n");
+}
 
 int main() {
-    printf("Running C implementation of Circular Queue...\n");
-    // TODO: Write test cases and execute your operations here
+    int choice, value;
+
+    while (1) {
+        printf("\n--- CIRCULAR QUEUE MENU ---\n");
+        printf("1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n");
+        printf("Enter choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                printf("Enter value: ");
+                scanf("%d", &value);
+                enqueue(value);
+                break;
+
+            case 2:
+                dequeue();
+                break;
+
+            case 3:
+                display();
+                break;
+
+            case 4:
+                printf("Exiting...\n");
+                return 0;
+
+            default:
+                printf("Invalid choice!\n");
+        }
+    }
+
     return 0;
 }
 ```
@@ -595,24 +1157,120 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file circular_queue.cpp
- * @brief C++ Implementation of Circular Queue
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-// TODO: Paste your C++ implementation of Circular Queue here
+#define MAX 5
+
+class CircularQueue {
+private:
+    int queue[MAX];
+    int front;
+    int rear;
+
+public:
+    CircularQueue() {
+        front = -1;
+        rear = -1;
+    }
+
+    // Enqueue (insert)
+    void enqueue(int value) {
+        // check overflow
+        if ((rear + 1) % MAX == front) {
+            cout << "Queue Overflow! Cannot insert " << value << endl;
+            return;
+        }
+
+        // first element
+        if (front == -1) {
+            front = 0;
+            rear = 0;
+        } else {
+            rear = (rear + 1) % MAX;
+        }
+
+        queue[rear] = value;
+        cout << value << " inserted into queue" << endl;
+    }
+
+    // Dequeue (delete)
+    void dequeue() {
+        if (front == -1) {
+            cout << "Queue Underflow! Nothing to delete" << endl;
+            return;
+        }
+
+        cout << queue[front] << " deleted from queue" << endl;
+
+        // only one element
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front = (front + 1) % MAX;
+        }
+    }
+
+    // Display queue
+    void display() {
+        if (front == -1) {
+            cout << "Queue is empty" << endl;
+            return;
+        }
+
+        cout << "Queue elements are: ";
+
+        int i = front;
+        while (true) {
+            cout << queue[i] << " ";
+
+            if (i == rear)
+                break;
+
+            i = (i + 1) % MAX;
+        }
+
+        cout << endl;
+    }
+};
 
 int main() {
-    std::cout << "Running C++ implementation of Circular Queue..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    CircularQueue q;
+    int choice, value;
+
+    while (true) {
+        cout << "\n--- CIRCULAR QUEUE MENU ---\n";
+        cout << "1. Enqueue\n2. Dequeue\n3. Display\n4. Exit\n";
+        cout << "Enter choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                cout << "Enter value: ";
+                cin >> value;
+                q.enqueue(value);
+                break;
+
+            case 2:
+                q.dequeue();
+                break;
+
+            case 3:
+                q.display();
+                break;
+
+            case 4:
+                cout << "Exiting..." << endl;
+                return 0;
+
+            default:
+                cout << "Invalid choice!" << endl;
+        }
+    }
+
     return 0;
 }
 ```
@@ -650,22 +1308,72 @@ A Binary Tree is a hierarchical structure where each node has at most two childr
 #### 💻 Source Code Placeholders
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View C Implementation</summary>
 
 ```c
-/**
- * @file trees.c
- * @brief C Implementation of Trees
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 
-// TODO: Paste your C implementation of Trees here
+// Node structure
+struct Node {
+    int data;
+    struct Node* left;
+    struct Node* right;
+};
+
+// Create new node
+struct Node* createNode(int value) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = value;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+// Insert in Binary Tree (level order style)
+struct Node* insert(struct Node* root, int value) {
+    if (root == NULL) {
+        return createNode(value);
+    }
+
+    if (root->left == NULL) {
+        root->left = createNode(value);
+    }
+    else if (root->right == NULL) {
+        root->right = createNode(value);
+    }
+    else {
+        insert(root->left, value);
+    }
+
+    return root;
+}
+
+// Inorder Traversal (Left -> Root -> Right)
+void inorder(struct Node* root) {
+    if (root == NULL) return;
+
+    inorder(root->left);
+    printf("%d ", root->data);
+    inorder(root->right);
+}
 
 int main() {
-    printf("Running C implementation of Trees...\n");
-    // TODO: Write test cases and execute your operations here
+    struct Node* root = NULL;
+    int n, value;
+
+    printf("How many nodes? ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("Enter value: ");
+        scanf("%d", &value);
+        root = insert(root, value);
+    }
+
+    printf("\nInorder Traversal: ");
+    inorder(root);
+
     return 0;
 }
 ```
@@ -673,24 +1381,72 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View C++ Implementation</summary>
 
 ```cpp
-/**
- * @file trees.cpp
- * @brief C++ Implementation of Trees
- */
-
 #include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+using namespace std;
 
-// TODO: Paste your C++ implementation of Trees here
+// Node structure
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+// Create new node
+Node* createNode(int value) {
+    Node* newNode = new Node();
+    newNode->data = value;
+    newNode->left = NULL;
+    newNode->right = NULL;
+    return newNode;
+}
+
+// Simple insertion (not BST, basic tree style)
+Node* insert(Node* root, int value) {
+    if (root == NULL) {
+        return createNode(value);
+    }
+
+    if (root->left == NULL) {
+        root->left = createNode(value);
+    }
+    else if (root->right == NULL) {
+        root->right = createNode(value);
+    }
+    else {
+        insert(root->left, value);
+    }
+
+    return root;
+}
+
+// Inorder Traversal: Left → Root → Right
+void inorder(Node* root) {
+    if (root == NULL) return;
+
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
 
 int main() {
-    std::cout << "Running C++ implementation of Trees..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    Node* root = NULL;
+    int n, value;
+
+    cout << "How many nodes? ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter value: ";
+        cin >> value;
+        root = insert(root, value);
+    }
+
+    cout << "\nInorder Traversal: ";
+    inorder(root);
+
     return 0;
 }
 ```
@@ -805,25 +1561,62 @@ A Heap is a complete binary tree that maintains the heap property: parent nodes 
 | Insert / Extract | $\mathcal{O}(\log N)$ | $\mathcal{O}(\log N)$ | - |
 | Heapify Array | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | - |
 
-#### 💻 Source Code Placeholders
+#### 💻 Source Code Implementations
 
 <details>
-<summary>💻 View C Template Placeholder</summary>
+<summary>💻 View Min Heap C Implementation</summary>
 
 ```c
-/**
- * @file heap_min_heap,_max_heap.c
- * @brief C Implementation of Heap (Min Heap, Max Heap)
- */
-
 #include <stdio.h>
-#include <stdlib.h>
 
-// TODO: Paste your C implementation of Heap (Min Heap, Max Heap) here
+#define MAX 50
+
+int heap[MAX];
+int size = 0;
+
+// Swap function
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Insert into Min Heap
+void insert(int value) {
+    int i = size;
+    heap[i] = value;
+    size++;
+
+    // heapify up
+    while (i > 0 && heap[i] < heap[(i - 1) / 2]) {
+        swap(&heap[i], &heap[(i - 1) / 2]);
+        i = (i - 1) / 2;
+    }
+}
+
+// Display heap
+void display() {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", heap[i]);
+    }
+    printf("\n");
+}
 
 int main() {
-    printf("Running C implementation of Heap (Min Heap, Max Heap)...\n");
-    // TODO: Write test cases and execute your operations here
+    int n, value;
+
+    printf("How many elements? ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("Enter value: ");
+        scanf("%d", &value);
+        insert(value);
+    }
+
+    printf("\nMin Heap: ");
+    display();
+
     return 0;
 }
 ```
@@ -831,24 +1624,194 @@ int main() {
 </details>
 
 <details>
-<summary>💻 View C++ Template Placeholder</summary>
+<summary>💻 View Max Heap C Implementation</summary>
 
-```cpp
-/**
- * @file heap_min_heap,_max_heap.cpp
- * @brief C++ Implementation of Heap (Min Heap, Max Heap)
- */
+```c
+#include <stdio.h>
 
-#include <iostream>
-#include <vector>
-#include <string>
-#include <algorithm>
+#define MAX 50
 
-// TODO: Paste your C++ implementation of Heap (Min Heap, Max Heap) here
+int heap[MAX];
+int size = 0;
+
+// Swap function
+void swap(int *a, int *b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+// Insert into Max Heap
+void insert(int value) {
+    int i = size;
+    heap[i] = value;
+    size++;
+
+    // heapify up
+    while (i > 0 && heap[i] > heap[(i - 1) / 2]) {
+        swap(&heap[i], &heap[(i - 1) / 2]);
+        i = (i - 1) / 2;
+    }
+}
+
+// Display heap
+void display() {
+    for (int i = 0; i < size; i++) {
+        printf("%d ", heap[i]);
+    }
+    printf("\n");
+}
 
 int main() {
-    std::cout << "Running C++ implementation of Heap (Min Heap, Max Heap)..." << std::endl;
-    // TODO: Write test cases and execute your operations here
+    int n, value;
+
+    printf("How many elements? ");
+    scanf("%d", &n);
+
+    for (int i = 0; i < n; i++) {
+        printf("Enter value: ");
+        scanf("%d", &value);
+        insert(value);
+    }
+
+    printf("\nMax Heap: ");
+    display();
+
+    return 0;
+}
+```
+
+</details>
+
+<details>
+<summary>💻 View Min Heap C++ Implementation</summary>
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define MAX 50
+
+class MinHeap {
+private:
+    int heap[MAX];
+    int size;
+
+public:
+    MinHeap() {
+        size = 0;
+    }
+
+    void swap(int &a, int &b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    // Insert function
+    void insert(int value) {
+        int i = size;
+        heap[i] = value;
+        size++;
+
+        // heapify up
+        while (i > 0 && heap[i] < heap[(i - 1) / 2]) {
+            swap(heap[i], heap[(i - 1) / 2]);
+            i = (i - 1) / 2;
+        }
+    }
+
+    // Display heap
+    void display() {
+        cout << "Min Heap: ";
+        for (int i = 0; i < size; i++) {
+            cout << heap[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    MinHeap h;
+    int n, value;
+
+    cout << "How many elements? ";
+    cin >> n;
+
+    for (int i = 0; i < n; i++) {
+        cout << "Enter value: ";
+        cin >> value;
+        h.insert(value);
+    }
+
+    h.display();
+
+    return 0;
+}
+```
+
+</details>
+
+<details>
+<summary>💻 View Max Heap C++ Implementation</summary>
+
+```cpp
+#include <iostream>
+using namespace std;
+
+#define MAX 50
+
+class MaxHeap {
+private:
+    int heap[MAX];
+    int size;
+
+public:
+    MaxHeap() {
+        size = 0;
+    }
+
+    void swap(int &a, int &b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    // Insert function
+    void insert(int value) {
+        int i = size;
+        heap[i] = value;
+        size++;
+
+        // heapify up
+        while (i > 0 && heap[i] > heap[(i - 1) / 2]) {
+            swap(heap[i], heap[(i - 1) / 2]);
+            i = (i - 1) / 2;
+        }
+    }
+
+    // Display heap
+    void display() {
+        cout << "Max Heap: ";
+        for (int i = 0; i < size; i++) {
+            cout << heap[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    MaxHeap heap;
+    
+    heap.insert(10);
+    heap.insert(5);
+    heap.insert(20);
+    heap.insert(2);
+    heap.insert(8);
+    heap.insert(15);
+    
+    heap.display();
+    
     return 0;
 }
 ```
